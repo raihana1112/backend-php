@@ -1,24 +1,74 @@
-
-<?php 
-// koneksi database
+<?php
 include '../koneksi.php';
- 
-// menangkap data yang di kirim dari form
 $id = $_GET['id'];
+echo
+"<script> var id = " . $id . "; </script>";
+
 $nama = $_GET['nama'];
-$username = $_GET['username'];
-$password = $_GET['password'];
+$fasilitas = $_GET['fasilitas'];
+$pilihan_tempat = $_GET['pilihan_tempat'];
+$fasilitas_rusak = $_GET['fasilitas_rusak'];
+$alamat = $_GET['alamat'];
+$keterangan = $_GET['keterangan'];
+$status_laporan = $_GET['status_laporan'];
+$ekstensi_diperbolehkan  = array('png', 'jpg', 'jpeg');
+$nama_file = $_FILES['file']['name'];
+$x = explode('.', $nama_file);
+$ekstensi = strtolower(end($x));
+$ukuran  = $_FILES['file']['size'];
+$file_tmp = $_FILES['file']['tmp_name'];
 
+if ($nama_file != '') {
+  if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+    if ($ukuran < 5044070) {
+      move_uploaded_file($file_tmp, '../depan/file/' . $nama_file);
+      $query = mysqli_query($koneksi, "UPDATE laporan set nama='$nama', fasilitas='$fasilitas',
+    pilihan_tempat='$pilihan_tempat', fasilitas_rusak='$fasilitas_rusak', alamat='$alamat', foto='$nama_file',
+    keterangan='$keterangan', status_laporan='$status_laporan' where id='$id'");
+      if ($query) {
 
-// update data ke database
-mysqli_query($conn,"update user set nama='$nama',username='$username', password='$password' where id='$id'");
- 
-// mengalihkan halaman kembali ke index.php
-  echo
-  "<script>
-  alert('Data Berhasil Terupdate');
-  document.location.href = '../settings.php';
-  </script>
-  ";
- 
-?>
+        echo
+        "<script>      
+            alert('Data Berhasil di Update');
+            document.location.href = `../edit-laporan.php?id=${id}`;
+            </script>
+            ";
+      } else {
+        echo
+        "<script>      
+            alert('Data Gagal di Update');
+            document.location.href = `../edit-laporan.php?id=${id}`;
+            </script>
+            ";
+      }
+    } else {
+      echo
+      "<script>    
+            alert('Ukuran File terlalu besar');
+            document.location.href = `../edit-laporan.php?id=${id}`;
+            </script>
+            ";
+    }
+  } else {
+    echo
+    "<script>  
+            alert('Ekstensi file yang diupload tidak diperbolehkan');
+            document.location.href = `../edit-laporan.php?id=${id}`;
+            </script>
+            ";
+  }
+} else {
+  $query = mysqli_query($koneksi, "UPDATE laporan set nama='$nama', fasilitas='$fasilitas',
+    pilihan_tempat='$pilihan_tempat', fasilitas_rusak='$fasilitas_rusak', alamat='$alamat',
+    keterangan='$keterangan', status_laporan='$status_laporan' where id='$id'");
+  if ($query) {
+
+    echo
+    "<script>      
+            alert('Data Berhasil di Update');
+            document.location.href = `../edit-laporan.php?id=${id}`;
+            </script>
+            ";
+  }
+}
+

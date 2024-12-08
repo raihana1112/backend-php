@@ -89,7 +89,7 @@
                                     <h4>Update Status Laporan Kerusakan Fasilitas</h4>
                                 </p>
 
-                                <form action="laporan_kerusakan/edit_laporan.php" method="GET">
+                                <form action="laporan_kerusakan/edit_laporan.php" method="GET" enctype="multipart/form-data">
                                 <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
                                     <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Nama</label>
                                         <input class="form-control form-control-solid" name="nama" type="text" value="<?php echo $d['nama']; ?>" required>
@@ -108,6 +108,13 @@
                                     <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Alamat</label>
                                         <input class="form-control form-control-solid" name="alamat" type="text" value="<?php echo $d['alamat']; ?>" required>
                                     </div>
+
+                                    <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Foto</label>
+                                    <input class="form-control form-control-solid" type="file" name="foto" value="<?php echo $d['foto']; ?>">
+                                            <img src="../depan/file/<?= $d['foto'] ?>" alt="" class="img-fluid my-2">
+                                            <input type="hidden" name="old_file" value="<?php echo $d['foto']; ?>">
+                                    </div>
+
                                     <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Keterangan</label>
                                         <input class="form-control form-control-solid" name="keterangan" type="text" value="<?php echo $d['keterangan']; ?>" required>
                                     </div>

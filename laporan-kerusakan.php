@@ -128,6 +128,7 @@ session_start();
     
         $no = 1;
         $data = mysqli_query($conn,"select * from laporan");
+
         while($d = mysqli_fetch_array($data)){
             ?>
             <tr>
@@ -138,7 +139,7 @@ session_start();
                 <td><?php echo $d['pilihan_tempat']; ?></td>
                 <td><?php echo $d['fasilitas_rusak']; ?></td>
                 <td><?php echo $d['alamat']; ?></td>
-                <td><img src="..depan/file/<?= $d['foto'] ?>" alt="" class="" style="width: 300px;"></td>
+                <td><img src="../depan/file/<?= $d['foto'] ?>" alt="" class="" style="width: 300px;"></td>
                 <td><?php echo $d['keterangan']; ?></td>
                 <td><?php echo $d['status_laporan']; ?></td>
                 <td>
