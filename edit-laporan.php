@@ -1,16 +1,3 @@
-<?php
-session_start();
-
-// Cek apakah user sudah login dan memiliki role admin
-if (!isset($_SESSION['id']) || $_SESSION['hak_akses'] != 'admin') {
-  header("Location: login.php");
-  exit();
-}
-
-// Konten dashboard admin
-?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +15,7 @@ if (!isset($_SESSION['id']) || $_SESSION['hak_akses'] != 'admin') {
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="">Dashboard Facility Care</a>
+            <a class="navbar-brand ps-3" href="index.php">Dashboard Facility Care</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -53,7 +40,7 @@ if (!isset($_SESSION['id']) || $_SESSION['hak_akses'] != 'admin') {
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -85,58 +72,64 @@ if (!isset($_SESSION['id']) || $_SESSION['hak_akses'] != 'admin') {
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard</h1>
+                        <h1 class="mt-4">Edit User</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">Update Status Laporan</li>
                         </ol>
+                        <?php
+    include 'koneksi.php';
+    $id = $_GET['id'];
+    $data = mysqli_query($conn,"select * from laporan where id='$id'");
+    while($d = mysqli_fetch_array($data)){
+        ?>
 
                         <div class="card mb-4">
                             <div class="card-body">
                                 <p class="mb-0">
-                                
-                                    <h3>Selamat datang di Dashboard Admin!!</h3> <br>
-                                    Pada Dashboard Admin ini, anda dapat melihat laporan kerusakan yang sudah di upload oleh masyarakat.
-                                    Anda dapat mengupdate status tersebut menjadi 3 Kategori, yaitu :
-                                    Belum diperiksa, Sedang dikerjakan dan Sudah diperiksa. 
-                                    <br><br>
-                                    Anda juga dapat menambahkan user pegawai baru. Terimakasih!!
+                                    <h4>Update Status Laporan Kerusakan Fasilitas</h4>
                                 </p>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                        <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Belum Diperiksa</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white" style="text-decoration:none">Laporan</a>
-                                        
+                                <form action="laporan_kerusakan/edit_laporan.php" method="GET">
+                                <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
+                                    <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Nama</label>
+                                        <input class="form-control form-control-solid" name="nama" type="text" value="<?php echo $d['nama']; ?>" required>
                                     </div>
-                                </div>
-                            </div>
-                        
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Sedang Dikerjakan</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white" style="text-decoration:none">Laporan</a>
-                                        
+                                                                
+                                    <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Fasilitas</label>
+                                        <input class="form-control form-control-solid" name="fasilitas" type="text" value="<?php echo $d['fasilitas']; ?>" required>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Sudah Diperiksa</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white" style="text-decoration:none">Laporan</a>
-                                        
+                                    <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Pilihan Tempat</label>
+                                        <input class="form-control form-control-solid" name="pilihan_tempat" type="text" value="<?php echo $d['pilihan_tempat']; ?>" required>
                                     </div>
-                                </div>
+                                    <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Fasilitas Rusak</label>
+                                        <input class="form-control form-control-solid" name="fasilitas_rusak" type="text" value="<?php echo $d['fasilitas_rusak']; ?>" required>
+                                    </div>
+                                                                
+                                    <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Alamat</label>
+                                        <input class="form-control form-control-solid" name="alamat" type="text" value="<?php echo $d['alamat']; ?>" required>
+                                    </div>
+                                    <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Keterangan</label>
+                                        <input class="form-control form-control-solid" name="keterangan" type="text" value="<?php echo $d['keterangan']; ?>" required>
+                                    </div>
+                                    <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Status Laporan</label>
+                                    <select class="form-select" name="status_laporan">
+                                            <option selected>Pilih Status</option>
+                                            <option value="Belum Diperiksa">Belum Diperiksa</option>
+                                            <option value="Sedang Dikerjakan">Sedang Dikerjakan</option>
+                                            <option value="Sudah Diperiksa">Sudah Diperiksa</option>
+                                        </select>
+                                    </div>
+                                
+                                    <br>
+
+                                    <input type="submit" value="Update Data" class="btn btn-success" style="float: left;">
+                                </form>
+                                <?php 
+    }
+    ?>  
+
                             </div>
-                            
                         </div>
-                    
-                        
 
                     </div>
                 </main>

@@ -1,6 +1,9 @@
 
+<?php
+include 'koneksi.php';
+session_start();
 
-
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -66,8 +69,7 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Admin
+                        
                     </div>
                 </nav>
             </div>
@@ -75,9 +77,7 @@
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Laporan Kerusakan</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Laporan Kerusakan</li>
-                        </ol>
+                        
 
                         <div class="card mb-4">
                             <div class="card-body">
@@ -125,7 +125,7 @@
                                     </tfoot>
                                     <tbody>
                                     <?php
-        include 'koneksi.php';
+    
         $no = 1;
         $data = mysqli_query($conn,"select * from laporan");
         while($d = mysqli_fetch_array($data)){
@@ -138,12 +138,12 @@
                 <td><?php echo $d['pilihan_tempat']; ?></td>
                 <td><?php echo $d['fasilitas_rusak']; ?></td>
                 <td><?php echo $d['alamat']; ?></td>
-                <td><?php echo $d['foto']; ?></td>
+                <td><img src="..depan/file/<?= $d['foto'] ?>" alt="" class="" style="width: 300px;"></td>
                 <td><?php echo $d['keterangan']; ?></td>
                 <td><?php echo $d['status_laporan']; ?></td>
                 <td>
-                    <a href="edit-user.php?id=<?php echo $d['id']; ?>">EDIT </a> ||
-                    <a href="users/hapus_user.php?id=<?php echo $d['id']; ?>">HAPUS</a>
+                    <a href="edit-laporan.php?id=<?php echo $d['id']; ?>">EDIT </a> ||
+                    <a href="laporan_kerusakan/hapus_laporan.php?id=<?php echo $d['id']; ?>">HAPUS</a>
                 </td>
             </tr>
             <?php

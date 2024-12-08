@@ -1,4 +1,8 @@
 
+<?php
+include 'koneksi.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -64,8 +68,7 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Admin
+                        
                     </div>
                 </nav>
             </div>
@@ -83,7 +86,7 @@
                                     <h4>Tambah Daftar User Pegawai Baru</h4>
                                 </p>
 
-                                <form action="tambah_user.php" method="POST">
+                                <form action="users/tambah_user.php" method="POST">
                                     <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Nama</label>
                                         <input class="form-control form-control-solid" name="nama" type="text" required>
                                     </div>
@@ -93,6 +96,13 @@
                                     </div>
                                     <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Password</label>
                                         <input class="form-control form-control-solid" name="password" type="text" required>
+                                    </div>
+                                    <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Hak Akses</label>
+                                        <select class="form-select" name="hak_akses">
+                                            <option selected>Pilih Role</option>
+                                            <option value="admin">Admin</option>
+                                            <option value="pegawai">Pegawai</option>
+                                        </select>
                                     </div>
                                 
                                     <br>

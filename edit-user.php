@@ -89,7 +89,7 @@
                                     <h4>Edit Daftar User Pegawai Baru</h4>
                                 </p>
 
-                                <form action="edit_user.php" method="POST">
+                                <form action="users/edit_users.php" method="GET">
                                 <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
                                     <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Nama</label>
                                         <input class="form-control form-control-solid" name="nama" type="text" value="<?php echo $d['nama']; ?>" required>
@@ -104,7 +104,7 @@
                                 
                                     <br>
 
-                                    <input type="submit" value="Tambah Data" class="btn btn-success" style="float: left;">
+                                    <input type="submit" value="Update Data" class="btn btn-success" style="float: left;">
                                 </form>
                                 <?php 
     }

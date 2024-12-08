@@ -17,7 +17,7 @@ mysqli_query($conn,"update user set nama='$nama',username='$username', password=
   echo
   "<script>
   alert('Data Berhasil Terupdate');
-  document.location.href = '../settings.php';
+  document.location.href = '../tambah-user.php';
   </script>
   ";
  

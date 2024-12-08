@@ -6,7 +6,6 @@ if (!isset($_SESSION['id']) || $_SESSION['hak_akses'] != 'pegawai') {
   header("Location: login.php");
   exit();
 }
-
 ?>
 
 
@@ -27,7 +26,7 @@ if (!isset($_SESSION['id']) || $_SESSION['hak_akses'] != 'pegawai') {
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.php">Dashboard Facility Care</a>
+            <a class="navbar-brand ps-3" href="#">Dashboard Facility Care</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -52,7 +51,7 @@ if (!isset($_SESSION['id']) || $_SESSION['hak_akses'] != 'pegawai') {
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -65,10 +64,7 @@ if (!isset($_SESSION['id']) || $_SESSION['hak_akses'] != 'pegawai') {
                         
 
                             <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="tambah-user.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Tambah User
-                            </a>
+                        
                             <a class="nav-link" href="settings.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Settings Akun
@@ -77,7 +73,7 @@ if (!isset($_SESSION['id']) || $_SESSION['hak_akses'] != 'pegawai') {
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Admin
+                        Pegawai
                     </div>
                 </nav>
             </div>
@@ -94,7 +90,7 @@ if (!isset($_SESSION['id']) || $_SESSION['hak_akses'] != 'pegawai') {
                                 <p class="mb-0">
                                 
                                     <h3>Selamat datang di Dashboard Pegawai!!</h3> <br>
-                                    Pada Dashboard Pegawai ini, anda dapat melihat laporan kerusakan yang sudah di upload oleh masyarakat.
+                                    Pada Dashboard Pegawai ini, anda dapat melihat laporan kerusakan yang sudah di upload oleh masyarakat. <br>
                                     Anda dapat mengupdate status tersebut menjadi 3 Kategori, yaitu :
                                     Belum diperiksa, Sedang dikerjakan dan Sudah diperiksa. 
                                     <br><br>

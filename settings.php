@@ -1,8 +1,8 @@
 <?php
     include 'koneksi.php';
-    $data = mysqli_query($conn,"select * from user where id = $id");
+    $data = mysqli_query($conn,"select * from user where id = ". $_SESSION['id']);
     while($d = mysqli_fetch_array($data)){
-        ?>
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,8 +69,7 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Admin
+                        
                     </div>
                 </nav>
             </div>
@@ -89,7 +88,7 @@
                                     
                                 </p>
 
-                                <form action="">
+                                <form action="users/edit_user.php" method="get">
                                 <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
                                     <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Nama</label>
                                         <input class="form-control form-control-solid" name="nama" type="text" value="<?php echo $d['nama']; ?>" required>
@@ -104,7 +103,7 @@
                                 
                                     <br>
 
-                                    <input type="submit" value="Tambah Data" class="btn btn-success" style="float: left;">
+                                    <input type="submit" value="Update Profile" class="btn btn-success" style="float: left;">
                                 </form>
                             </div>
                         </div>
