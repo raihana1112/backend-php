@@ -22,7 +22,7 @@ if ($nama_file != '') {
   if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
     if ($ukuran < 5044070) {
       move_uploaded_file($file_tmp, '../depan/file/' . $nama_file);
-      $query = mysqli_query($koneksi, "UPDATE laporan set nama='$nama', fasilitas='$fasilitas',
+      $query = mysqli_query($conn, "UPDATE laporan set nama='$nama', fasilitas='$fasilitas',
     pilihan_tempat='$pilihan_tempat', fasilitas_rusak='$fasilitas_rusak', alamat='$alamat', foto='$nama_file',
     keterangan='$keterangan', status_laporan='$status_laporan' where id='$id'");
       if ($query) {
@@ -30,14 +30,14 @@ if ($nama_file != '') {
         echo
         "<script>      
             alert('Data Berhasil di Update');
-            document.location.href = `../edit-laporan.php?id=${id}`;
+            document.location.href = `../laporan-kerusakan.php`;
             </script>
             ";
       } else {
         echo
         "<script>      
             alert('Data Gagal di Update');
-            document.location.href = `../edit-laporan.php?id=${id}`;
+            document.location.href = `../laporan-kerusakan.php`;
             </script>
             ";
       }
@@ -45,7 +45,7 @@ if ($nama_file != '') {
       echo
       "<script>    
             alert('Ukuran File terlalu besar');
-            document.location.href = `../edit-laporan.php?id=${id}`;
+            document.location.href = `../laporan-kerusakan.php`;
             </script>
             ";
     }
@@ -53,12 +53,12 @@ if ($nama_file != '') {
     echo
     "<script>  
             alert('Ekstensi file yang diupload tidak diperbolehkan');
-            document.location.href = `../edit-laporan.php?id=${id}`;
+            document.location.href = `../laporan-kerusakan.php`;
             </script>
             ";
   }
 } else {
-  $query = mysqli_query($koneksi, "UPDATE laporan set nama='$nama', fasilitas='$fasilitas',
+  $query = mysqli_query($conn, "UPDATE laporan set nama='$nama', fasilitas='$fasilitas',
     pilihan_tempat='$pilihan_tempat', fasilitas_rusak='$fasilitas_rusak', alamat='$alamat',
     keterangan='$keterangan', status_laporan='$status_laporan' where id='$id'");
   if ($query) {
@@ -66,7 +66,7 @@ if ($nama_file != '') {
     echo
     "<script>      
             alert('Data Berhasil di Update');
-            document.location.href = `../edit-laporan.php?id=${id}`;
+            document.location.href = `../laporan-kerusakan.php`;
             </script>
             ";
   }

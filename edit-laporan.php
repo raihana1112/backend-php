@@ -72,7 +72,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Edit User</h1>
+                        <h1 class="mt-4">Update Laporan</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Update Status Laporan</li>
                         </ol>
@@ -89,7 +89,7 @@
                                     <h4>Update Status Laporan Kerusakan Fasilitas</h4>
                                 </p>
 
-                                <form action="laporan_kerusakan/edit_laporan.php" method="GET" enctype="multipart/form-data">
+                                <form action="laporan_kerusakan/edit_laporan.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
                                     <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Nama</label>
                                         <input class="form-control form-control-solid" name="nama" type="text" value="<?php echo $d['nama']; ?>" required>
@@ -110,7 +110,7 @@
                                     </div>
 
                                     <div class="col-sm-3 mb-3 mb-sm-0"><label for="">Foto</label>
-                                    <input class="form-control form-control-solid" type="file" name="foto" value="<?php echo $d['foto']; ?>">
+                                    <input class="form-control form-control-solid" type="file" name="file" value="<?php echo $d['foto']; ?>">
                                             <img src="../depan/file/<?= $d['foto'] ?>" alt="" class="img-fluid my-2">
                                             <input type="hidden" name="old_file" value="<?php echo $d['foto']; ?>">
                                     </div>
@@ -125,6 +125,8 @@
                                             <option value="Sedang Dikerjakan">Sedang Dikerjakan</option>
                                             <option value="Sudah Diperiksa">Sudah Diperiksa</option>
                                         </select>
+
+                                        
                                     </div>
                                 
                                     <br>
