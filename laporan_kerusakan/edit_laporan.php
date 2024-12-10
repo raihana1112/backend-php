@@ -4,13 +4,13 @@ $id = $_GET['id'];
 echo
 "<script> var id = " . $id . "; </script>";
 
-$nama = $_GET['nama'];
-$fasilitas = $_GET['fasilitas'];
-$pilihan_tempat = $_GET['pilihan_tempat'];
-$fasilitas_rusak = $_GET['fasilitas_rusak'];
-$alamat = $_GET['alamat'];
-$keterangan = $_GET['keterangan'];
-$status_laporan = $_GET['status_laporan'];
+$nama = $_POST['nama'];
+$fasilitas = $_POST['fasilitas'];
+$pilihan_tempat = $_POST['pilihan_tempat'];
+$fasilitas_rusak = $_POST['fasilitas_rusak'];
+$alamat = $_POST['alamat'];
+$keterangan = $_POST['keterangan'];
+$status_laporan = $_POST['status_laporan'];
 $ekstensi_diperbolehkan  = array('png', 'jpg', 'jpeg');
 $nama_file = $_FILES['file']['name'];
 $x = explode('.', $nama_file);
